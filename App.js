@@ -31,7 +31,7 @@ app.use(bodyParser.json()) // formato json no body
 
 /** configuracao de CORS */
 app.use((req, res, next) => {
-    res.header('Acces-Controll-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Origin', '*')
     res.header(
         'Acces-Controll-Allow-Header',
         'Content-Type, Origin, X-Requested-With, Accept, Authorization')
