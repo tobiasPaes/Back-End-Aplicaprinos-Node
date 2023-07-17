@@ -33,7 +33,7 @@ router.get('/:id', async (req, res, next) => {
 })
 
 router.post('/', async (req, res, next) => {
-    const { cod, genero, idade } = req.body
+    const { cod, genero, idade, qnt_reproducao, vacina, peso_atual } = req.body
     const cap = await sql`insert into caprino(cod, genero, idade) values (${cod}, ${genero}, ${idade})`
     return res.status(201).send('criado')
 })
