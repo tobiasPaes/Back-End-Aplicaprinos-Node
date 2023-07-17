@@ -33,10 +33,10 @@ app.use(bodyParser.json()) // formato json no body
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*')
     res.header(
-        'Acces-Controll-Allow-Header',
+        'Access-Controll-Allow-Header',
         'Content-Type, Origin, X-Requested-With, Accept, Authorization')
     if (req.method === 'OPTIONS') {
-        res.header('Acces-Control-Allow-Methods', 'PUT, POST, PATCH, GET, DELETE')
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, GET, DELETE')
         return res.status(200).send({})
     }
 
