@@ -28,7 +28,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
     const id = req.params.id
-    const cap = await sql`select * from caprino where cod = ${id}`
+    const cap = await sql`select * from caprino where cod = '${id}'`
     return res.status(200).send(cap)
 })
 
@@ -41,7 +41,7 @@ router.post('/', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
     const id = req.params.id
-    const capBanco = await sql`select * from caprino where cod = ${id}`
+    const capBanco = await sql`select * from caprino where cod = '${id}'`
     const capBody = req.body
 
     if(capBody.genero !== null){
@@ -63,14 +63,14 @@ router.put('/:id', async (req, res, next) => {
         capBanco.peso_novo = capBody.peso_novo
     }
 
-    const capAtual = await sql`update caprino set genero = ${capBanco.genero}, qnt_reproducao = ${capBanco.qnt_reproducao}, idade = ${capBanco.idade}, vacina = ${capBanco.vacina}, peso_atual = ${capBanco.peso_atual}, peso_novo = ${capBanco.peso_novo} where cod = ${id}`
+    const capAtual = await sql`update caprino set genero = ${capBanco.genero}, qnt_reproducao = ${capBanco.qnt_reproducao}, idade = ${capBanco.idade}, vacina = ${capBanco.vacina}, peso_atual = ${capBanco.peso_atual}, peso_novo = ${capBanco.peso_novo} where cod = '${id}'`
 
     return res.status(200).send(capAtual)
 })
 
 router.delete('/:id', async (req, res, next) => {
     const id = req.params.id
-    await sql`delete from caprino where cod = ${id}`
+    await sql`delete from caprino where cod = '${id}'`
     return res.status(200).send({
         mensagem: 'caprino removido com sucesso'
     })
